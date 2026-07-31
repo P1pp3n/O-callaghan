@@ -4,6 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- SECURITY -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://images.unsplash.com data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests;" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="format-detection" content="telephone=no" />
+
   <!-- SEO -->
   <title>O'callaghan | Web Design, SEO Writing & Research — Billy Macray</title>
   <meta name="description" content="O'callaghan is a digital services studio by Billy Macray. We build websites, write SEO content, and deliver research that helps small businesses own their space online." />
@@ -38,6 +43,8 @@
     "description": "Digital services studio offering web design, SEO writing, and research.",
     "url": "https://ocallaghan.com",
     "founder": { "@type": "Person", "name": "Billy Macray" },
+    "telephone": "+1-843-843-6124",
+    "email": "macraybilly66@gmail.com",
     "serviceType": ["Web Design", "SEO Writing", "Content Research"],
     "areaServed": { "@type": "Country", "name": "Canada" }
   }
@@ -225,7 +232,6 @@
       position:absolute; inset:0;
       background: linear-gradient(135deg, var(--navy-950) 0%, transparent 70%);
     }
-    /* Decorative gold lines on hero right */
     .hero-deco {
       position:absolute; inset:0; pointer-events:none;
     }
@@ -355,7 +361,6 @@
       content:''; position:absolute; inset:0;
       background:linear-gradient(90deg, transparent 50%, var(--navy-900) 100%);
     }
-    /* Gold corner brackets */
     .about-left::before {
       content:''; position:absolute; z-index:2;
       top:2rem; left:2rem; width:40px; height:40px;
@@ -504,7 +509,6 @@
       background:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=40&fit=crop') center/cover;
       opacity:0.06;
     }
-    /* Decorative corner brackets */
     #cta::after {
       content:''; position:absolute;
       top:3rem; left:3rem; width:50px; height:50px;
@@ -522,6 +526,7 @@
     .cta-h2 { font-size:clamp(2.4rem,5vw,4.2rem); color:#fff; margin-bottom:1.2rem; }
     .cta-h2 em { font-style:italic; color:var(--gold-300); }
     .cta-p { font-size:0.95rem; color:rgba(255,255,255,0.45); line-height:1.85; margin-bottom:2.8rem; font-weight:300; }
+    .cta-btn-row { display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; }
     .btn-gold {
       display:inline-flex; align-items:center; gap:8px;
       background:var(--gold); color:var(--navy-950);
@@ -549,38 +554,57 @@
     .cd-text a { color:var(--navy-700); transition:color 0.25s; }
     .cd-text a:hover { color:var(--gold-700); }
 
-    /* Form */
-    .contact-form { display:flex; flex-direction:column; gap:1.2rem; }
-    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-    .form-group { display:flex; flex-direction:column; gap:0.5rem; }
-    .form-group label {
-      font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase;
-      color:var(--muted); font-weight:500;
+    /* Direct contact card (replaces form) */
+    .contact-card {
+      background:#fff; border:1px solid var(--border); border-radius:var(--r);
+      padding:clamp(2rem,4vw,2.8rem); display:flex; flex-direction:column; gap:1.1rem;
     }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      background:#fff; border:1px solid var(--border);
-      padding:0.85rem 1rem; font-family:'Outfit',sans-serif;
-      font-size:0.9rem; color:var(--text); font-weight:300;
-      border-radius:var(--r); transition:border-color 0.25s, box-shadow 0.25s;
-      outline:none; width:100%;
+    .contact-card h3 {
+      font-family:'Libre Baskerville',serif; font-weight:400; font-size:1.3rem;
+      color:var(--navy-900); margin-bottom:0.3rem;
     }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color:var(--gold);
-      box-shadow:0 0 0 3px rgba(184,150,46,0.12);
+    .contact-card .cc-sub { font-size:0.85rem; color:var(--muted); font-weight:300; margin-bottom:0.6rem; }
+    .contact-btn {
+      display:flex; align-items:center; gap:0.9rem; width:100%;
+      padding:1rem 1.3rem; border-radius:var(--r);
+      font-size:0.82rem; letter-spacing:0.05em; font-weight:500;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.2s, border-color 0.25s;
+      text-transform:none;
     }
-    .form-group textarea { resize:vertical; min-height:120px; }
-    .form-submit {
-      background:var(--navy-900); color:var(--gold-300);
-      padding:1rem; border:1px solid var(--navy-700); border-radius:var(--r);
-      font-family:'Outfit',sans-serif; font-size:0.78rem; letter-spacing:0.13em;
-      text-transform:uppercase; font-weight:500; cursor:pointer;
-      transition:background 0.25s, border-color 0.25s;
+    .contact-btn .cb-icon {
+      width:38px; height:38px; border-radius:50%; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center;
     }
-    .form-submit:hover { background:var(--navy-800); border-color:var(--gold); }
+    .contact-btn .cb-icon svg { width:18px; height:18px; }
+    .contact-btn .cb-text { display:flex; flex-direction:column; gap:2px; }
+    .contact-btn .cb-label { font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; opacity:0.7; }
+    .contact-btn .cb-value { font-size:0.95rem; font-weight:500; }
+
+    .contact-btn.whatsapp {
+      background:#1E3580; color:#fff; border:1px solid #1A2E6E;
+    }
+    .contact-btn.whatsapp .cb-icon { background:rgba(255,255,255,0.12); }
+    .contact-btn.whatsapp .cb-icon svg { stroke:#fff; fill:#fff; }
+    .contact-btn.whatsapp:hover { background:var(--navy-800); transform:translateY(-2px); box-shadow:0 10px 28px rgba(12,26,62,0.2); }
+
+    .contact-btn.call {
+      background:var(--navy-900); color:var(--gold-300); border:1px solid var(--navy-700);
+    }
+    .contact-btn.call .cb-icon { background:rgba(184,150,46,0.15); }
+    .contact-btn.call .cb-icon svg { stroke:var(--gold-300); fill:none; }
+    .contact-btn.call:hover { background:var(--navy-800); border-color:var(--gold); transform:translateY(-2px); }
+
+    .contact-btn.mail {
+      background:#fff; color:var(--navy-900); border:1px solid var(--border);
+    }
+    .contact-btn.mail .cb-icon { background:var(--gold-50); }
+    .contact-btn.mail .cb-icon svg { stroke:var(--gold); fill:none; }
+    .contact-btn.mail:hover { border-color:var(--gold); background:var(--gold-50); }
+
+    .contact-note {
+      font-size:0.72rem; color:var(--muted); font-weight:300; line-height:1.7;
+      border-top:1px solid var(--border); padding-top:1rem; margin-top:0.3rem;
+    }
 
     /* ── FOOTER ── */
     footer {
@@ -633,7 +657,6 @@
       .work-grid { grid-template-columns:1fr; }
       .work-card.featured { grid-column:auto; }
       .contact-grid { grid-template-columns:1fr; }
-      .form-row { grid-template-columns:1fr; }
     }
     @media (max-width:480px) {
       .proc-grid { grid-template-columns:1fr; }
@@ -819,7 +842,6 @@
         <h2 id="work-heading" class="display" style="margin-top:1rem">Work that <em>speaks</em> for itself.</h2>
       </div>
       <div class="work-grid">
-        <!-- Featured case study: Personaliteeess -->
         <article class="work-card featured fade-up">
           <div class="wc-img-wrap">
             <img
@@ -833,13 +855,12 @@
             <div class="wc-tag">Web Design · SEO · Open Graph</div>
             <h3 class="wc-title">Personaliteeess</h3>
             <p class="wc-desc">A full luxury landing page for a Winnipeg-based Nigerian event décor and gift studio. Built with a deep pink editorial aesthetic, full SEO, Open Graph social previews, Schema.org structured data, mobile-first responsive design, and a custom SVG favicon. Took the brand from Instagram-only to a professionally hosted website.</p>
-            <a href="https://www.personaliteeess.com/" target="_blank" rel="noopener" class="wc-link">
+            <a href="https://www.personaliteeess.com/" target="_blank" rel="noopener noreferrer" class="wc-link">
               View Live Site
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
             </a>
           </div>
         </article>
-        <!-- Article writing -->
         <article class="work-card fade-up">
           <div class="wc-img-wrap">
             <img
@@ -855,7 +876,6 @@
             <a href="#contact" class="wc-link">Enquire About Writing</a>
           </div>
         </article>
-        <!-- Research -->
         <article class="work-card fade-up">
           <div class="wc-img-wrap">
             <img
@@ -942,10 +962,12 @@
         <p class="eyebrow">Ready?</p>
         <h2 id="cta-heading" class="cta-h2 display">Let's build something<br><em>worth noticing.</em></h2>
         <p class="cta-p">Whether you need a website, an article, or a research project — O'callaghan delivers work that makes your business impossible to ignore.</p>
-        <a href="#contact" class="btn-gold">
-          Start a Conversation
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+        <div class="cta-btn-row">
+          <a href="https://wa.me/18438436124?text=Hi%20Billy%2C%20I%27d%20like%20to%20talk%20about%20a%20project" target="_blank" rel="noopener noreferrer" class="btn-gold">
+            Message on WhatsApp
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -955,13 +977,19 @@
         <div class="contact-left fade-up">
           <p class="eyebrow">Contact</p>
           <h2 id="contact-heading" class="display" style="margin-top:1rem">Start a <em>conversation.</em></h2>
-          <p>Tell us what you're working on and we'll get back to you within 24 hours. No obligation, no sales pressure — just a straightforward conversation about how we can help.</p>
+          <p>Tell us what you're working on and we'll get back to you fast. No obligation, no sales pressure — just a straightforward conversation about how we can help. WhatsApp is the quickest way to reach us.</p>
           <div class="contact-detail">
             <div class="cd-item">
               <div class="cd-icon">
                 <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </div>
-              <div class="cd-text"><a href="mailto:billy@ocallaghan.com">billy@ocallaghan.com</a></div>
+              <div class="cd-text"><a href="mailto:macraybilly66@gmail.com">macraybilly66@gmail.com</a></div>
+            </div>
+            <div class="cd-item">
+              <div class="cd-icon">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              </div>
+              <div class="cd-text"><a href="tel:+18438436124">+1 (843) 843-6124</a></div>
             </div>
             <div class="cd-item">
               <div class="cd-icon">
@@ -973,49 +1001,48 @@
               <div class="cd-icon">
                 <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               </div>
-              <div class="cd-text">Response within 24 hours</div>
+              <div class="cd-text">Fast response — usually same day</div>
             </div>
           </div>
         </div>
+
         <div class="fade-up">
-          <form class="contact-form" onsubmit="handleSubmit(event)">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">Your Name</label>
-                <input type="text" id="name" placeholder="Jane Smith" required />
-              </div>
-              <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" placeholder="jane@company.com" required />
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="service">Service Needed</label>
-              <select id="service" required>
-                <option value="" disabled selected>Select a service</option>
-                <option>Web Design & Development</option>
-                <option>SEO & Article Writing</option>
-                <option>Research & Content Strategy</option>
-                <option>Multiple Services</option>
-                <option>Not Sure Yet</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="budget">Budget Range (CAD)</label>
-              <select id="budget">
-                <option value="" disabled selected>Select a range</option>
-                <option>Under $300</option>
-                <option>$300 – $600</option>
-                <option>$600 – $1,200</option>
-                <option>$1,200+</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="message">Tell Us About Your Project</label>
-              <textarea id="message" placeholder="What are you working on? The more detail the better..." required></textarea>
-            </div>
-            <button type="submit" class="form-submit">Send Message →</button>
-          </form>
+          <div class="contact-card">
+            <h3>Reach out directly</h3>
+            <p class="cc-sub">Pick whichever's easiest — WhatsApp, a call, or email.</p>
+
+            <a href="https://wa.me/18438436124?text=Hi%20Billy%2C%20I%27d%20like%20to%20talk%20about%20a%20project" target="_blank" rel="noopener noreferrer" class="contact-btn whatsapp">
+              <span class="cb-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M17.6 6.32A8.86 8.86 0 0012.02 4a8.9 8.9 0 00-7.7 13.34L3 21l3.77-1.28a8.9 8.9 0 004.25 1.08h.01a8.9 8.9 0 007.7-13.34 8.85 8.85 0 00-1.13-1.14zM12.02 19.4h-.01a7.4 7.4 0 01-3.77-1.03l-.27-.16-2.8.95.94-2.72-.18-.28a7.4 7.4 0 1113.75-3.94 7.4 7.4 0 01-7.66 7.18zm4.06-5.54c-.22-.11-1.32-.65-1.52-.73-.2-.07-.35-.11-.5.11-.15.22-.57.73-.7.88-.13.15-.26.16-.48.05-.22-.11-.94-.35-1.79-1.11-.66-.59-1.11-1.32-1.24-1.54-.13-.22-.01-.34.1-.45.1-.1.22-.26.33-.39.11-.13.15-.22.22-.37.07-.15.04-.28-.02-.39-.06-.11-.5-1.21-.69-1.66-.18-.43-.36-.37-.5-.38h-.43c-.15 0-.39.06-.6.28-.2.22-.79.77-.79 1.87s.81 2.17.92 2.32c.11.15 1.6 2.44 3.87 3.42.54.23.96.37 1.29.48.54.17 1.03.15 1.42.09.43-.06 1.32-.54 1.51-1.06.19-.52.19-.96.13-1.06-.06-.1-.2-.15-.42-.26z"/></svg>
+              </span>
+              <span class="cb-text">
+                <span class="cb-label">Fastest</span>
+                <span class="cb-value">Message on WhatsApp</span>
+              </span>
+            </a>
+
+            <a href="tel:+18438436124" class="contact-btn call">
+              <span class="cb-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              </span>
+              <span class="cb-text">
+                <span class="cb-label">Call direct</span>
+                <span class="cb-value">+1 (843) 843-6124</span>
+              </span>
+            </a>
+
+            <a href="mailto:macraybilly66@gmail.com" class="contact-btn mail">
+              <span class="cb-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </span>
+              <span class="cb-text">
+                <span class="cb-label">Prefer email</span>
+                <span class="cb-value">macraybilly66@gmail.com</span>
+              </span>
+            </a>
+
+            <p class="contact-note">Tapping a button on mobile opens WhatsApp, your phone dialer, or your mail app directly — nothing is typed into a form or stored on this site.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -1050,9 +1077,10 @@
       <div>
         <div class="foot-h">Get in Touch</div>
         <ul class="foot-links">
-          <li><a href="#contact">Start a Project</a></li>
-          <li><a href="mailto:billy@ocallaghan.com">Email Us</a></li>
-          <li><a href="https://personalities-theta-rose.vercel.app/" target="_blank" rel="noopener">Featured Work</a></li>
+          <li><a href="https://wa.me/18438436124" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+          <li><a href="tel:+18438436124">Call Us</a></li>
+          <li><a href="mailto:macraybilly66@gmail.com">Email Us</a></li>
+          <li><a href="https://personalities-theta-rose.vercel.app/" target="_blank" rel="noopener noreferrer">Featured Work</a></li>
         </ul>
       </div>
     </div>
@@ -1095,21 +1123,6 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
-
-    // Contact form
-    function handleSubmit(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('.form-submit');
-      btn.textContent = 'Message Sent ✓';
-      btn.style.background = '#1A2E6E';
-      btn.style.color = '#D4B86A';
-      setTimeout(() => {
-        btn.textContent = 'Send Message →';
-        btn.style.background = '';
-        btn.style.color = '';
-        e.target.reset();
-      }, 3000);
-    }
   </script>
 </body>
 </html>
